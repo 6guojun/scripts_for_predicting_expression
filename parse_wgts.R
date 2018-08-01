@@ -4,17 +4,15 @@ option_list = list(make_option("--file", action="store", default=NA, type='chara
               help="*wgt.RDat file"))
 opt = parse_args(OptionParser(option_list=option_list))
 
-FILES_DIR <- '/cellar/users/jlz014/fusion_twas-master/TCGA-BRCA_normed_weights/EUR/'
+FILES_DIR <- '/cellar/users/jlz014/fusion_twas-master/TCGA-BRCA_weights_all_patients/EUR'
 
 fh <- opt$file
 print(fh)
-MISISNG_DIR <- '/cellar/users/jlz014/fusion_twas-master/TCGA-BRCA_normed_weights/genes_without_enet_models'
-SUMMARY_DIR <- '/cellar/users/jlz014/fusion_twas-master/TCGA-BRCA_normed_weights/summary'
-# missing_fh <- '/cellar/users/jlz014/fusion_twas-master/TCGA-BRCA_normed_weights/genes_without_enet_models.txt'
-# summary_fh <- '/cellar/users/jlz014/fusion_twas-master/TCGA-BRCA_normed_weights/summary.dat'
-gene <- unlist(strsplit(fh,'[.]'))[2]
+MISSING_DIR <- '/cellar/users/jlz014/fusion_twas-master/TCGA-BRCA_weights_all_patients/genes_without_enet_models'
+SUMMARY_DIR <- '/cellar/users/jlz014/fusion_twas-master/TCGA-BRCA_weights_all_patients/summary'
 
-load(paste0(FILES_DIR,fh),verbose=T)
+gene <- unlist(strsplit(fh, '[.]'))[2]
+load(file.path(FILES_DIR,fh),verbose=T)
 
 enet_coeffs <- wgt.matrix[,'enet']
 

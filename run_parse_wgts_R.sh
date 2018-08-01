@@ -7,7 +7,7 @@
 #$ -l h_vmem=16G
 #$ -l long
 #$ -pe smp 8
-#$ -t 1-16298
+#$ -t 1-5
 
 INFILE=`sed -n -e "$SGE_TASK_ID p" all_tcga-brca_weights.txt`
 
